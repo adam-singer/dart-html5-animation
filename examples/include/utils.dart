@@ -1,4 +1,41 @@
 class Utils {
+  static parseColor(var color, var toNumber) {
+    if (toNumber === true) {
+      if (color is num) {
+        return (color | 0); // chop off decimal
+      }
+      
+     
+      if (color is String && color.startsWith('#')) {
+        String s = color;
+        s = s.substring(1);
+        int i = Math.parseInt(s);
+        return i;
+      }
+      
+  
+    } else {
+      if (color is num) {
+        
+        int r;
+        int g;
+        int b;
+        r = (color&0xff0000)>>16;
+        g = (color&0x00ff00)>>8;
+        b = color&0x0000ff;
+        
+        /*
+        int i = 0x112233;
+        print(i.toRadixString(16));
+        print(((i&0xff0000)>>16).toRadixString(16));
+        print(((i&0x00ff00)>>8).toRadixString(16));
+        print((i&0x0000ff).toRadixString(16));
+        */
+        return '#' + r.toRadixString(16) + g.toRadixString(16) + b.toRadixString(16);
+      }
+    }
+  }
+  
   static Mouse captureMouse(var element) {
     Mouse mouse = new Mouse();
     // non of the Element.scroll* is available in htmllib for whatever reason. 
