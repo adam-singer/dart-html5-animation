@@ -1,4 +1,12 @@
 class Utils {
+  static containsPoint(var rect, var x, var y) {
+    return !(
+        x < rect.x ||
+        x > rect.x + rect.width ||
+        y < rect.y ||
+        y > rect.y + rect.height);
+  }
+  
   static parseColor(var color, var toNumber) {
     if (toNumber === true) {
       if (color is num) {
@@ -36,6 +44,44 @@ class Utils {
     }
   }
   
+  /*
+  static touch captureTouch(var element) {
+    var _touch = new touch(0,0,false,null);
+    
+    element.on.touchStart.add((TouchEvent event) {
+      _touch.isPressed = true;
+      _touch.event = event;
+    }, false);
+    
+    element.on.touchEnd.add((TouchEvent event) {
+      _touch.isPressed = false;
+      _touch.x = null;
+      _touch.y = null;
+      _touch.event = event;
+    }, false);
+    
+    element.on.touchMove.add((TouchEvent event) {
+      var touch_event = event.targetTouches[0];
+      var x,y;
+      
+      if (touch_event.pageX || touch_event.pageY) {
+        x = touch_event.pageX;
+        y = touch_event.pageY;
+      } else {
+        x = touch_event.clientX + body_scrollLeft + element_scrollLeft;
+        y = touch_event.clientY + body_scrollTop + element_scrollTop;
+      }
+      x -= offsetLeft;
+      y -= offsetTop;
+      
+      _touch.x = x;
+      _touch.y = y;
+      _touch.event = event;
+    }, false);
+    
+    return _touch;
+  }
+  */
   static Mouse captureMouse(var element) {
     Mouse mouse = new Mouse();
     // non of the Element.scroll* is available in htmllib for whatever reason. 
