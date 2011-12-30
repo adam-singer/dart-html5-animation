@@ -1,4 +1,12 @@
 class Utils {
+  static intersects(var rectA, var rectB) {
+    return !(
+        rectA.x + rectA.width < rectB.x ||
+        rectB.x + rectB.width < rectA.x ||
+        rectA.y + rectA.height < rectB.y ||
+        rectB.y + rectB.height < rectA.y);
+  }
+  
   static containsPoint(var rect, var x, var y) {
     return !(
         x < rect.x ||
