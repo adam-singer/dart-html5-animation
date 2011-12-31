@@ -15,6 +15,32 @@ class Utils {
         y > rect.y + rect.height);
   }
   
+  static colorToRGB(var color, var alpha) {
+    int i=0;
+    if (color is String && color.startsWith('#')) {
+      i = Math.parseInt("0x"+color.substring(1));
+    } else {
+      i = color;
+    }
+    
+    if (alpha == null) {
+      alpha = 1;
+    }
+    
+    //parse hex values
+    var r = i >> 16 & 0xff,
+        g = i >> 8 & 0xff,
+        b = i & 0xff,
+        a = (alpha < 0) ? 0 : ((alpha > 1) ? 1 : alpha);
+        
+    //only use 'rgba' if needed
+    if (a === 1) {
+      return "rgb("+ r +","+ g +","+ b +")";
+    } else {
+      return "rgba("+ r +","+ g +","+ b +","+ a +")";
+    }
+  }
+  
   static parseColor(var color, var toNumber) {
     if (toNumber === true) {
       if (color is num) {
