@@ -25,12 +25,12 @@ class Ball {
   
   Ball() {
     this.radius=40;
-    this.color='#ff0000';
+    this.color='#ffff00';
     _defaultValues();
   }
   
   Ball.withRadius(this.radius) {
-    this.color='#ff0000';
+    this.color='#ffff00';
     _defaultValues();
   }
   
@@ -46,12 +46,13 @@ class Ball {
     context.scale(scaleX,scaleY);
     
     context.lineWidth = lineWidth;
-    context.fillStyle = color;
+    context.fillStyle = 'rgb(200,200,0)';//color;
     context.beginPath();
     //x, y, radius, start_angle, end_angle, anti-clockwise
     context.arc(0, 0, radius, 0, (Math.PI * 2), true);
     context.closePath();
     context.fill();
+    
     if (lineWidth > 0) {
       context.stroke();
     }
